@@ -1,0 +1,21 @@
+language: go
+
+go:
+  - '1.11.x'
+
+services:
+  - docker
+
+jobs:
+  include:
+    - stage: Integration Tests
+      before_script:
+        # Download kubectl 
+        - curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.12.0/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
+        # Download and build kind
+        - go get sigs.k8s.io/kind
+        # Create a new kind cluster using default properties
+        - kind create cluster
+        # Set KUBECONFIG environment variable
+        - export KUBECONFIG="$(kind get kubeconfig-path)"
+      script: make test-integration
