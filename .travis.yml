@@ -10,12 +10,19 @@ jobs:
   include:
     - stage: Integration Tests
       before_script:
-        # Download kubectl 
+        # Download and install kubectl
         - curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.12.0/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
-        # Download and build kind
+        
+        # Download and install KinD
         - go get sigs.k8s.io/kind
-        # Create a new kind cluster using default properties
+        # It's possible to download and install KinD using curl, similar as for kubectl
+        # This is useful in cases when Go toolchain isn't available or you prefer running stable version
+        # Binaries for KinD are available on GitHub Releases: https://github.com/kubernetes-sigs/kind/releases
+        # - curl -Lo kind https://github.com/kubernetes-sigs/kind/releases/download/0.0.1/kind-linux-amd64 && chmod +x kind && sudo mv kind /usr/local/bin/
+        
+        # Create a new Kubernetes cluster using KinD
         - kind create cluster
+
         # Set KUBECONFIG environment variable
         - export KUBECONFIG="$(kind get kubeconfig-path)"
       script: make test-integration
