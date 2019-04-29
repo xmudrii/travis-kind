@@ -1,6 +1,7 @@
 # travis-kind [![Build Status](https://travis-ci.org/xmudrii/travis-kind.svg?branch=master)](https://travis-ci.org/xmudrii/travis-kind)
 
-This is an example showing how to run Kubernetes 1.11+ on [Travis-CI](https://travis-ci.org/) using [Kubernetes in Docker (`KinD`)](https://sigs.k8s.io/kind). For more details check the lightning talk I held on KubeCon North America 2018: ['Spawning Kubernetes in CI For Integration Tests'](https://sched.co/GrUv).
+This is an example showing how to run Kubernetes 1.11+ on [Travis-CI](https://travis-ci.org/) using [Kubernetes in Docker (`KinD`)](https://sigs.k8s.io/kind). For more details check the lightning talk I held on KubeCon North America 2018: ['Spawning Kubernetes in CI For Integration Tests'](https://sched.co/GrUv)
+and the [follow up article on Loodse blog](https://www.loodse.com/blog/2019-03-12-running-kubernetes-in-the-ci-pipeline-/).
 
 The recording of the talk is available on [YouTube](https://youtu.be/ZiJn7olAS1M) and the slides are available on [Sched](https://schd.ws/hosted_files/kccna18/28/Spawning%20Kubernetes%20in%20CI%20for%20Integration%20Tests.pdf):
 
